@@ -47,7 +47,7 @@ public class Elements extends PageObject{
 
     @Step
     public void goToMultiselect(){
-        driver.get(host+"controls/multiselect");
+        driver.get(host+"/multiselect");
     }
 
     @Step

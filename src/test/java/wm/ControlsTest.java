@@ -1,28 +1,29 @@
 package wm;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.Elements;
-import ru.yandex.qatools.allure.annotations.Attachment;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Stories;
 import setup.DriverSetup;
 import setup.WebDriverSteps;
 
-@Test
+import static org.testng.Assert.assertTrue;
+
+@Test@Listeners(AllureOnFailListener.class)
 public class ControlsTest {
 
 
-    private WebDriver driver;
     private WebDriverSteps steps;
     private Elements elements;
 
 
     @BeforeClass
     public void setUp(){
-        this.driver = DriverSetup.getDriver("chrome");
+        WebDriver driver = DriverSetup.getDriver("chrome");
         this.steps = new WebDriverSteps(driver);
         this.elements = new Elements(driver);
         steps.openMainPage();
@@ -30,15 +31,25 @@ public class ControlsTest {
     }
 
     @Test
-    public void firstMultiselectTest(){
-        elements.checkFirstMultiselect();
-        makeAttach();
+    @Features("Feature 1")
+    @Stories("Story 1")
+    public void test1(){
+        assertTrue(true);
     }
 
     @Test
-    public void firstMultiselectClickTest(){
-        elements.clickFirstMultiselect();
-        makeAttach();
+    @Features("Feature 2")
+    @Stories("Story 1")
+    public void test2(){
+        elements.goToElementsPage();
+    }
+
+    @Test
+    @Features("Feature 2")
+    @Stories("Story 2")
+    public void test3(){
+        steps.openMainPage();
+        assertTrue(false);
     }
 
 
@@ -47,17 +58,8 @@ public class ControlsTest {
         steps.quit();
     }
 
-    @AfterMethod
-    public void tearDown(ITestResult result){
-        if(!result.isSuccess()){
-            makeAttach();
-        }
-    }
 
-    @Attachment
-    public byte[] makeAttach() {
-        return steps.takeScreenShoot();
-    }
+
 
 
 }

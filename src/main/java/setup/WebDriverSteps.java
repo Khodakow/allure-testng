@@ -21,15 +21,15 @@ import java.util.logging.Logger;
 
 public class WebDriverSteps {
 
-    public WebDriver driver;
+    public static WebDriver driver;
     public WebDriverSteps(WebDriver driver) {
-        this.driver = driver;
+        WebDriverSteps.driver = driver;
     }
 
 
-    @Step
-    @Attachment
-    public byte[] takeScreenShoot() {
+
+    @Attachment(value = "screenshot", type = "image/png")
+    public static byte[] takeScreenShoot() {
         try {
             WebDriver augmentedDriver = new Augmenter().augment(driver);
             File screenshot = ((TakesScreenshot) augmentedDriver).getScreenshotAs(OutputType.FILE);
@@ -65,13 +65,13 @@ public class WebDriverSteps {
         driver.manage().window().maximize();
     }
 
-    private String getFileName(String nameTest) {
+    private static String getFileName(String nameTest) {
         DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy_hh.mm.ss");
         Date date = new Date();
         return dateFormat.format(date) + "_" + nameTest + ".png";
     }
 
-    private String getPath(String nameTest) throws IOException {
+    private static String getPath(String nameTest) throws IOException {
         File directory = new File(".");
         return directory.getCanonicalPath() + "/target/allure-results/" + getFileName(nameTest);
     }
