@@ -1,7 +1,6 @@
 package pages.dashboard.elements;
 
 import org.openqa.selenium.support.FindBy;
-import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.annotations.Block;
 import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
@@ -13,9 +12,5 @@ import ru.yandex.qatools.htmlelements.element.HtmlElement;
 @Block(@FindBy(id = "form_top_graph_1"))
 public class Graph extends HtmlElement {
 
-    @Step
-    public boolean topGraphIsVisible(){
-        return this.isDisplayed();
-    }
 
 }

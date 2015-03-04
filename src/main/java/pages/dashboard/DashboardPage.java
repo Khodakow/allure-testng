@@ -13,14 +13,16 @@ import static org.testng.Assert.assertTrue;
 public class DashboardPage {
 
     private Graph graph;
+    private WebDriver driver;
 
     public DashboardPage(WebDriver driver) {
         HtmlElementLoader.populatePageObject(this, driver);
+        this.driver = driver;
     }
 
     @Step
     public void isOnDashboard(){
-        assertTrue(graph.topGraphIsVisible());
+        assertTrue(driver.getCurrentUrl().contains("office/dashboard"));
     }
 
 

@@ -53,8 +53,7 @@ public class Utils {
         }
     }
 
-    @Step@Attachment
-    public String close() {
+     public String close() {
         String curUrl = driver.getCurrentUrl();
         driver.quit();
         return curUrl;
