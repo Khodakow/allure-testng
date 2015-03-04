@@ -19,11 +19,11 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class WebDriverSteps {
+public class Utils {
 
     public static WebDriver driver;
-    public WebDriverSteps(WebDriver driver) {
-        WebDriverSteps.driver = driver;
+    public Utils(WebDriver driver) {
+        Utils.driver = driver;
     }
 
 
@@ -48,7 +48,7 @@ public class WebDriverSteps {
          
             return imageInByteArray;
         } catch (IOException ex) {
-            Logger.getLogger(WebDriverSteps.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

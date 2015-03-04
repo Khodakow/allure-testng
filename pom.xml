@@ -31,19 +31,26 @@
             <artifactId>thucydides-core</artifactId>
             <version>0.9.229</version>
 
-            <!--<exclusions>
-            <exclusion>
-              <groupId>org.seleniumhq.selenium</groupId>
-              <artifactId>selenium</artifactId>
-            </exclusion>
-            </exclusions> -->
         </dependency>
-        <!--Allure Junit-->
+        <!--Allure TestNG-->
         <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
             <artifactId>allure-testng-adaptor</artifactId>
             <version>${allure.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>ru.yandex.qatools.htmlelements</groupId>
+            <artifactId>htmlelements-java</artifactId>
+            <version>1.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.yandex.qatools.htmlelements</groupId>
+            <artifactId>htmlelements-matchers</artifactId>
+            <version>1.8</version>
+        </dependency>
+
 
         <!--Web Driver-->
         <dependency>
@@ -123,15 +130,13 @@
                     </argLine>
 
                     <includes>
-                        <include>**/ControlsTest.java</include>
+                        <include>**/LoginTest.java</include>
                     </includes>
 
 
                     <systemPropertyVariables>
-                        <baseUrl>http://control.team.sagl</baseUrl>
+                        <baseUrl>http://cityads.com/</baseUrl>
                         <remoteUrl>http://127.0.0.1:4444/wd/hub</remoteUrl>
-                        <apiUrl>http://cityads.com</apiUrl>
-                        <statUrl>http://stat.cityads.com</statUrl>
                         <user>testercityads@test.ru</user>
                         <password>123698745</password>
                         <driver>chrome</driver>
