@@ -137,8 +137,9 @@
                     <systemPropertyVariables>
                         <baseUrl>http://cityads.com/</baseUrl>
                         <remoteUrl>http://127.0.0.1:4444/wd/hub</remoteUrl>
-                        <user>testercityads@test.ru</user>
-                        <password>123698745</password>
+                        <wmname>cityads@test.ru</wmname>
+                        <wmpassword>123698745</wmpassword>
+                        <wmRemoteAuth>d2d540277b3ea9bebfdd3b1152940354</wmRemoteAuth>
                         <driver>chrome</driver>
                     </systemPropertyVariables>
 

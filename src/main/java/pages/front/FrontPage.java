@@ -2,6 +2,7 @@ package pages.front;
 
 import org.openqa.selenium.WebDriver;
 import pages.front.elements.PopupLoginForm;
+import roles.User;
 import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 
@@ -16,9 +17,9 @@ public class FrontPage {
         HtmlElementLoader.populatePageObject(this, driver);
     }
 
-    @Step(value = "авторизация")
-    public void login(String user,String password){
-        popupLoginForm.fillLoginForm(user,password);
+    @Step
+    public void login(User user){
+        popupLoginForm.fillLoginForm(user.getName(), user.getPassword());
         popupLoginForm.submitForm();
     }
 

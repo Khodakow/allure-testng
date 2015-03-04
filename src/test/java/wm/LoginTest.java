@@ -7,6 +7,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.dashboard.DashboardPage;
 import pages.front.FrontPage;
+import roles.Webmaster;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
@@ -21,6 +22,7 @@ public class LoginTest {
     private Utils utils;
     private FrontPage front;
     private DashboardPage dashboard;
+    private Webmaster wm;
 
     @BeforeClass
     public void setUp(){
@@ -28,6 +30,7 @@ public class LoginTest {
         utils = new Utils(driver);
         front = new FrontPage(driver);
         dashboard = new DashboardPage(driver);
+        wm = new Webmaster();
         utils.openMainPage();
     }
 
@@ -36,7 +39,7 @@ public class LoginTest {
     @Features("Webmaster Authorization")
     @Stories("correct credentials")
     public void loginTest(){
-        front.login("me0i@mail.ru","123698745");
+        front.login(wm);
         dashboard.isOnDashboard();
     }
 
@@ -44,7 +47,7 @@ public class LoginTest {
 
     @AfterClass
     public void quit(){
-        utils.quit();
+        utils.close();
     }
 
 

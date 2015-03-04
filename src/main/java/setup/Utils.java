@@ -53,16 +53,20 @@ public class Utils {
         }
     }
 
-
-    public void quit() {
+    @Step@Attachment
+    public String close() {
+        String curUrl = driver.getCurrentUrl();
         driver.quit();
+        return curUrl;
     }
 
-    @Step
-    public void openMainPage(){
+    @Step(value = "go to mail application page")
+    @Attachment
+    public String openMainPage(){
         String host = System.getProperty("baseUrl");
         driver.get(host);
         driver.manage().window().maximize();
+        return driver.getCurrentUrl();
     }
 
     private static String getFileName(String nameTest) {
