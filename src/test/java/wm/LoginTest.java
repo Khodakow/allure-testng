@@ -44,7 +44,6 @@ public class LoginTest {
     }
 
 
-
     @AfterClass
     public void quit(){
         utils.close();
