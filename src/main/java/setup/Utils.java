@@ -60,7 +60,7 @@ public class Utils {
         return curUrl;
     }
 
-    @Step(value = "go to mail application page")
+    @Step(value = "go to main application page")
     @Attachment
     public String openMainPage(){
         String host = System.getProperty("baseUrl");
