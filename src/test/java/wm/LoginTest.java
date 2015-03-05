@@ -43,6 +43,7 @@ public class LoginTest {
         dashboard.isOnDashboard();
     }
 
+
     @AfterClass
     public void quit(){
         utils.close();
