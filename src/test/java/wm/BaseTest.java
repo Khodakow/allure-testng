@@ -1,6 +1,7 @@
 package wm;
 
 
+import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import setup.DriverSetup;
@@ -13,11 +14,15 @@ public abstract class BaseTest {
 
     private WebDriver driver;
     private Utils utils;
+    private DriverSetup setup;
 
-    BaseTest(){
-        driver = DriverSetup.getDriver();
+    @BeforeClass
+    public void init(){
+        setup = new DriverSetup();
+        driver = setup.getDriver();
         utils = new Utils(driver);
     }
+
 
     public WebDriver getDriver() {
         return driver;
@@ -29,7 +34,6 @@ public abstract class BaseTest {
 
     @AfterClass
     public void tearDown(){
-        driver.close();
         driver.quit();
     }
 }

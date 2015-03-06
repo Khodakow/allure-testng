@@ -14,7 +14,7 @@ import setup.Utils;
 
 @Test
 @Listeners(AllureOnFailListener.class)
-public class LoginTest extends BaseTest {
+public class LoginEmptyTest extends BaseTest {
 
 
 
@@ -31,17 +31,17 @@ public class LoginTest extends BaseTest {
         utils = super.getUtils();
         front = new FrontPage(driver);
         dashboard = new DashboardPage(driver);
-        wm = new Webmaster();
+        wm = new Webmaster("","");
         utils.openMainPage();
     }
 
 
     @Test
-    @Stories("авторизация вма с правильными данными")
+    @Stories("авторизация с незаполненными данными")
     @Severity(value = SeverityLevel.CRITICAL)
-    public void loginTest() throws InterruptedException {
+    public void loginEmptyTest() throws InterruptedException {
         front.login(wm);
-        dashboard.isOnDashboard();
+        dashboard.isNotOnDashboard();
     }
 
 

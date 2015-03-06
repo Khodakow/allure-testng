@@ -25,7 +25,7 @@ public class DriverSetup {
 
     @Step
     @Attachment
-    public static WebDriver getDriver(){
+    public WebDriver getDriver(){
         WebDriver driver = null;
         String browser = System.getProperty("driver");
         DesiredCapabilities capabilities;

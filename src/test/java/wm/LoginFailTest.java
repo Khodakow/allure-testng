@@ -7,16 +7,14 @@ import org.testng.annotations.Test;
 import pages.dashboard.DashboardPage;
 import pages.front.FrontPage;
 import roles.Webmaster;
-import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 import setup.Utils;
 
-@Test@Listeners(AllureOnFailListener.class)
+@Test
+@Listeners(AllureOnFailListener.class)
 public class LoginFailTest extends BaseTest {
-
-
 
     private FrontPage front;
     private DashboardPage dashboard;
@@ -26,6 +24,7 @@ public class LoginFailTest extends BaseTest {
 
     @BeforeClass
     public void setUp(){
+        super.init();
         driver = super.getDriver();
         utils = super.getUtils();
         front = new FrontPage(driver);
@@ -35,10 +34,9 @@ public class LoginFailTest extends BaseTest {
     }
 
     @Test
+    @Stories("авторизация вма с неправильными данными")
     @Severity(value = SeverityLevel.CRITICAL)
-    @Features("Webmaster Authorization")
-    @Stories("wrong credentials")
-    public void wrongLoginTest(){
+    public void wrongLoginTest() throws InterruptedException {
         front.login(wm);
         dashboard.isNotOnDashboard();
     }
