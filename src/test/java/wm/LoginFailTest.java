@@ -11,6 +11,7 @@ import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 import setup.Utils;
+import wm.listener.AllureOnFailListener;
 
 @Test
 @Listeners(AllureOnFailListener.class)

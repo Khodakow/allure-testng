@@ -1,9 +1,7 @@
 package wm;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.dashboard.DashboardPage;
 import pages.front.FrontPage;
 import roles.Webmaster;
@@ -11,6 +9,7 @@ import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 import setup.Utils;
+import wm.listener.AllureOnFailListener;
 
 @Test
 @Listeners(AllureOnFailListener.class)
@@ -33,6 +32,12 @@ public class LoginTest extends BaseTest {
         dashboard = new DashboardPage(driver);
         wm = new Webmaster();
         utils.openMainPage();
+        front.login(wm);
+    }
+
+    @BeforeMethod
+    public void waitPageLoad(){
+        dashboard.waitSpinner();
     }
 
 
@@ -40,16 +45,22 @@ public class LoginTest extends BaseTest {
     @Stories("авторизация вма с правильными данными")
     @Severity(value = SeverityLevel.CRITICAL)
     public void loginTest() throws InterruptedException {
-        front.login(wm);
         dashboard.isOnDashboard();
         dashboard.waitSpinner();
+    }
 
+    @Test
+    @Stories("проверка ссылки из блока Топовые предложения")
+    @Severity(value = SeverityLevel.CRITICAL)
+    public void hotOfferTest(){
+        dashboard.stopSlider();
     }
 
 
-
-
-
+    @AfterMethod
+    public void goBack(){
+        dashboard.clickLogo();
+    }
 
 
 

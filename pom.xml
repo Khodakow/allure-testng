@@ -135,7 +135,7 @@
 
                     <suiteXmlFiles>
                         <suiteXmlFile>
-                            config.xml
+                            webmaster.xml
                         </suiteXmlFile>
                     </suiteXmlFiles>
 
