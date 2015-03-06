@@ -42,6 +42,8 @@ public class LoginTest extends BaseTest {
     public void loginTest() throws InterruptedException {
         front.login(wm);
         dashboard.isOnDashboard();
+        dashboard.waitSpinner();
+
     }
 
 

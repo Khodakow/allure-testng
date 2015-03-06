@@ -58,7 +58,7 @@ public class Utils {
         driver.quit();
        }
 
-    @Step(value = "go to main application page")
+    @Step
     @Attachment
     public String openMainPage(){
         String host = System.getProperty("baseUrl");
