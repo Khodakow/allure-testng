@@ -37,7 +37,7 @@ public class LoginEmptyTest extends BaseTest {
 
 
     @Test
-    @Stories("авторизация с незаполненными данными")
+    @Stories("авторизация вма с незаполненными данными")
     @Severity(value = SeverityLevel.CRITICAL)
     public void loginEmptyTest() throws InterruptedException {
         front.login(wm);
