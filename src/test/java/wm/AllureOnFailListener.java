@@ -1,5 +1,6 @@
 package wm;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -17,7 +18,13 @@ public class AllureOnFailListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        Utils.takeScreenShoot();
+        Object currentClass = result.getInstance();
+        WebDriver webDriver = ((BaseTest) currentClass).getDriver();
+        Utils utils = ((BaseTest) currentClass).getUtils();
+        if (webDriver != null)
+        {
+            utils.takeScreenShoot();
+        }
     }
 
     @Override
@@ -25,7 +32,13 @@ public class AllureOnFailListener implements ITestListener {
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        Utils.takeScreenShoot();
+        Object currentClass = result.getInstance();
+        WebDriver webDriver = ((BaseTest) currentClass).getDriver();
+        Utils utils = ((BaseTest) currentClass).getUtils();
+        if (webDriver != null)
+        {
+            utils.takeScreenShoot();
+        }
     }
 
     @Override

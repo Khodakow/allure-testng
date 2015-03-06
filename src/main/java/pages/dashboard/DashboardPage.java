@@ -5,6 +5,7 @@ import pages.dashboard.elements.Graph;
 import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -23,6 +24,11 @@ public class DashboardPage {
     @Step
     public void isOnDashboard(){
         assertTrue(driver.getCurrentUrl().contains("office/dashboard"));
+    }
+
+    @Step
+    public void isNotOnDashboard(){
+        assertFalse(driver.getCurrentUrl().contains("office/dashboard"));
     }
 
 

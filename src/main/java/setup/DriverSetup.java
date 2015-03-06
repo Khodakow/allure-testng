@@ -25,8 +25,9 @@ public class DriverSetup {
 
     @Step
     @Attachment
-    public static WebDriver getDriver(String browser){
+    public WebDriver getDriver(){
         WebDriver driver = null;
+        String browser = System.getProperty("driver");
         DesiredCapabilities capabilities;
         switch (browser) {
             case "phantomjs":
