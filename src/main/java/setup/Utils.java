@@ -58,7 +58,7 @@ public class Utils {
         driver.quit();
        }
 
-    @Step
+    @Step("переход на главную страницу приложения")
     @Attachment
     public String openMainPage(){
         String host = System.getProperty("baseUrl");

@@ -39,7 +39,7 @@ public class PopupLoginForm extends HtmlElement {
         passwordInput.sendKeys(password);
     }
 
-    @Step
+    @Step("отправляем форму")
     public void submitForm(){
         submit.click();
     }

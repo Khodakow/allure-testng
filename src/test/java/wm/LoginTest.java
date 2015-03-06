@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import pages.dashboard.DashboardPage;
 import pages.front.FrontPage;
+import pages.offercard.OfferCardPage;
 import roles.Webmaster;
 import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
@@ -19,6 +20,7 @@ public class LoginTest extends BaseTest {
 
     private FrontPage front;
     private DashboardPage dashboard;
+    private OfferCardPage card;
     private Webmaster wm;
     private Utils utils;
     private WebDriver driver;
@@ -30,6 +32,7 @@ public class LoginTest extends BaseTest {
         utils = super.getUtils();
         front = new FrontPage(driver);
         dashboard = new DashboardPage(driver);
+        card = new OfferCardPage(driver);
         wm = new Webmaster();
         utils.openMainPage();
         front.login(wm);
@@ -55,6 +58,7 @@ public class LoginTest extends BaseTest {
     public void hotOfferTest(){
         dashboard.stopSlider();
         dashboard.goToFirstHotOffer();
+        card.isOnDashboardTab();
     }
 
 

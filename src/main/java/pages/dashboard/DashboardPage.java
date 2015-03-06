@@ -32,37 +32,38 @@ public class DashboardPage extends BasePage{
     @FindBy(xpath = "//a[contains(@class,'logotype')]")
     private Link logo;
 
-    @Step
+    @Step("должен быть на сводной")
     public void isOnDashboard(){
         assertTrue(driver.getCurrentUrl().contains("office/dashboard"));
     }
 
-    @Step
+    @Step("не должен быть на сводной")
     public void isNotOnDashboard(){
         assertFalse(driver.getCurrentUrl().contains("office/dashboard"));
     }
 
-    @Step
+    @Step("ожидание загрузки")
     public void waitSpinner(){
         spin.waitSpinner();
     }
 
-    @Step("Останавливаем слайдер через джаваскрипт")
+    @Step("останавливаем слайдер через джаваскрипт")
     public void stopSlider() {
        evaluateJavascript("_('#hotOffersSlider').pause(true)");
     }
 
 
-    @Step
+    @Step("клик лого")
     public void clickLogo(){
         logo.click();
         spin.waitSpinner();
     }
 
 
-    @Step
+    @Step("клик по первому офферу из топ предложений")
     public void goToFirstHotOffer(){
         hot.clickFirstSwitch();
+        hot.clickTopOffer();
         spin.waitSpinner();
     }
 

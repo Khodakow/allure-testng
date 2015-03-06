@@ -1,8 +1,5 @@
 package roles;
 
-import ru.yandex.qatools.allure.annotations.Attachment;
-import ru.yandex.qatools.allure.annotations.Step;
-
 /**
  * Created by s.lugovskiy on 04.03.2015 13:07.
  */
@@ -15,8 +12,7 @@ public class Webmaster implements User {
 
 
 
-    @Step(value = "get wm name")
-    @Attachment
+
     public String getName(){
         return name;
     }

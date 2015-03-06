@@ -17,7 +17,7 @@ public class FrontPage {
         HtmlElementLoader.populatePageObject(this, driver);
     }
 
-    @Step
+    @Step("заполняем форму авторизации в попапе")
     public void login(User user){
         popupLoginForm.fillLoginForm(user.getName(), user.getPassword());
         popupLoginForm.submitForm();

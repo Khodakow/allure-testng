@@ -6,8 +6,8 @@
     <test name="Авторизация ВМа">
         <classes>
             <class name="wm.LoginTest"/>
-<!--            <class name="wm.LoginFailTest"/>
-            <class name="wm.LoginEmptyTest"/>-->
+            <class name="wm.LoginFailTest"/>
+            <class name="wm.LoginEmptyTest"/>
         </classes>
     </test>
 

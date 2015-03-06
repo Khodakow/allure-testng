@@ -23,7 +23,7 @@ public class DriverSetup {
     private static String remoteUrl = System.getProperty("remoteUrl");
 
 
-    @Step
+    @Step("инициализация драйвера")
     @Attachment
     public WebDriver getDriver(){
         WebDriver driver = null;

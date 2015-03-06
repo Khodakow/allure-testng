@@ -15,7 +15,7 @@ import ru.yandex.qatools.htmlelements.element.Link;
 @Block(@FindBy(xpath = "(//div[@class='span3']/div)[1]"))
 public class HotOffers extends HtmlElement {
 
-    @FindBy(xpath = "(.//div[@class='_slide_switch'])[1]")
+    @FindBy(xpath = "(//div[@class='_slide_switcher left']/div)[1]")
     private WebElement firstSwitch;
 
     @FindBy(xpath = "//div[@id='hotOffersSlider']/div/div[@class='_item']/div[@class='offer-card']/div[@class='offer-card-name']/a")
