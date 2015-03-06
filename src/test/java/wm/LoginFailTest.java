@@ -38,7 +38,7 @@ public class LoginFailTest extends BaseTest {
     @Severity(value = SeverityLevel.CRITICAL)
     @Features("Webmaster Authorization")
     @Stories("wrong credentials")
-    public void loginTest(){
+    public void wrongLoginTest(){
         front.login(wm);
         dashboard.isNotOnDashboard();
     }
