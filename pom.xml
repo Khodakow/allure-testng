@@ -18,8 +18,8 @@
         <compiler.version>1.7</compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <allure.version>1.4.0</allure.version>
-        <aspectj.version>1.7.4</aspectj.version>
+        <allure.version>1.4.4</allure.version>
+        <aspectj.version>1.8.3</aspectj.version>
     </properties>
 
     <name>Elements CityAds</name>
@@ -129,9 +129,15 @@
                         -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
                     </argLine>
 
-                    <includes>
+                    <!--<includes>
                         <include>**/LoginTest.java</include>
-                    </includes>
+                    </includes>-->
+
+                    <suiteXmlFiles>
+                        <suiteXmlFile>
+                            config.xml
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
 
 
                     <systemPropertyVariables>
@@ -140,7 +146,7 @@
                         <wmname>cityads@test.ru</wmname>
                         <wmpassword>123698745</wmpassword>
                         <wmRemoteAuth>d2d540277b3ea9bebfdd3b1152940354</wmRemoteAuth>
-                        <driver>chrome</driver>
+                        <driver>firefox</driver>
                     </systemPropertyVariables>
 
                 </configuration>
@@ -162,7 +168,7 @@
             <plugin>
                 <groupId>ru.yandex.qatools.allure</groupId>
                 <artifactId>allure-maven-plugin</artifactId>
-                <version>${allure.version}</version>
+                <version>1.4.0</version>
             </plugin>
         </plugins>
     </reporting>

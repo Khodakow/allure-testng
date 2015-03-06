@@ -21,15 +21,15 @@ import java.util.logging.Logger;
 
 public class Utils {
 
-    public static WebDriver driver;
+    public WebDriver driver;
     public Utils(WebDriver driver) {
-        Utils.driver = driver;
+        this.driver = driver;
     }
 
 
 
     @Attachment(value = "screenshot", type = "image/png")
-    public static byte[] takeScreenShoot() {
+    public byte[] takeScreenShoot() {
         try {
             WebDriver augmentedDriver = new Augmenter().augment(driver);
             File screenshot = ((TakesScreenshot) augmentedDriver).getScreenshotAs(OutputType.FILE);
@@ -53,11 +53,10 @@ public class Utils {
         }
     }
 
-     public String close() {
+     public void close() {
         String curUrl = driver.getCurrentUrl();
         driver.quit();
-        return curUrl;
-    }
+       }
 
     @Step(value = "go to main application page")
     @Attachment

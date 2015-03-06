@@ -14,7 +14,7 @@ import ru.yandex.qatools.allure.model.SeverityLevel;
 import setup.Utils;
 
 @Test@Listeners(AllureOnFailListener.class)
-public class LoginTest extends BaseTest {
+public class LoginFailTest extends BaseTest {
 
 
 
@@ -30,17 +30,17 @@ public class LoginTest extends BaseTest {
         utils = super.getUtils();
         front = new FrontPage(driver);
         dashboard = new DashboardPage(driver);
-        wm = new Webmaster();
+        wm = new Webmaster("webmaster","azaza");
         utils.openMainPage();
     }
 
     @Test
     @Severity(value = SeverityLevel.CRITICAL)
     @Features("Webmaster Authorization")
-    @Stories("correct credentials")
+    @Stories("wrong credentials")
     public void loginTest(){
         front.login(wm);
-        dashboard.isOnDashboard();
+        dashboard.isNotOnDashboard();
     }
 
 
