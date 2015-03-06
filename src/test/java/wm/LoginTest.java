@@ -54,6 +54,7 @@ public class LoginTest extends BaseTest {
     @Severity(value = SeverityLevel.CRITICAL)
     public void hotOfferTest(){
         dashboard.stopSlider();
+        dashboard.goToFirstHotOffer();
     }
 
 
