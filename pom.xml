@@ -146,7 +146,7 @@
                         <wmname>cityads@test.ru</wmname>
                         <wmpassword>123698745</wmpassword>
                         <wmRemoteAuth>d2d540277b3ea9bebfdd3b1152940354</wmRemoteAuth>
-                        <driver>firefox</driver>
+                        <driver>chrome</driver>
                     </systemPropertyVariables>
 
                 </configuration>
