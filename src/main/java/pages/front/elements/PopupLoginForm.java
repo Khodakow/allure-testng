@@ -16,6 +16,7 @@ import ru.yandex.qatools.htmlelements.element.TextInput;
 @Block(@FindBy(xpath = "//div[@id='popup-login']"))
 public class PopupLoginForm extends HtmlElement {
 
+
     @Name("enter button")
     @FindBy(xpath="//a[@id='popup-login-link' and ancestor::div[@class='link relative' and ancestor::li[@class='login']]]")
     private Link enter;
@@ -32,6 +33,7 @@ public class PopupLoginForm extends HtmlElement {
     @FindBy(className = "submit")
     private WebElement submit;
 
+
     @Step
     public void fillLoginForm(String user,String password){
         enter.click();
@@ -43,4 +45,7 @@ public class PopupLoginForm extends HtmlElement {
     public void submitForm(){
         submit.click();
     }
+
+
+
 }

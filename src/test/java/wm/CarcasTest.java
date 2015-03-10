@@ -1,7 +1,10 @@
 package wm;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 import pages.dashboard.DashboardPage;
 import pages.front.FrontPage;
 import pages.offercard.OfferCardPage;
@@ -53,6 +56,7 @@ public class CarcasTest extends BaseTest {
         wm = new Webmaster();
         utils.openMainPage();
         front.login(wm);
+        dashboard.isOnDashboard();
 
     }
 
@@ -60,7 +64,7 @@ public class CarcasTest extends BaseTest {
 
     @Test(dataProvider = "getUrl")
     @Severity(value = SeverityLevel.CRITICAL)
-    public void carcaseTest(String url) throws InterruptedException {
+    public void carcasTest(String url) throws InterruptedException {
 
         dashboard.goToSection(url);
         dashboard.waitSpinner();

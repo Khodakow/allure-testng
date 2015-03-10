@@ -38,11 +38,6 @@ public class LoginTest extends BaseTest {
         front.login(wm);
     }
 
-    @BeforeMethod
-    public void waitPageLoad(){
-        dashboard.waitSpinner();
-    }
-
 
     @Test
     @Stories("авторизация вма с правильными данными")
@@ -56,6 +51,7 @@ public class LoginTest extends BaseTest {
     @Stories("проверка ссылки из блока Топовые предложения")
     @Severity(value = SeverityLevel.CRITICAL)
     public void hotOfferTest(){
+        dashboard.isOnDashboard();
         dashboard.stopSlider();
         dashboard.goToFirstHotOffer();
         card.isOnDashboardTab();

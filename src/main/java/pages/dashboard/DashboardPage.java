@@ -1,9 +1,11 @@
 package pages.dashboard;
 
+import net.thucydides.core.annotations.findby.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 import pages.Spinners;
+import pages.WebElementHelper;
 import pages.dashboard.elements.HotOffers;
 import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.element.Link;
@@ -21,19 +23,23 @@ public class DashboardPage extends BasePage{
     private WebDriver driver;
     private Spinners spin;
     private HotOffers hot;
+    private WebElementHelper helper;
 
     public DashboardPage(WebDriver driver) {
         super(driver);
         HtmlElementLoader.populatePageObject(this, driver);
         this.driver = driver;
         this.spin = new Spinners(driver);
+        this.helper = new WebElementHelper(driver);
     }
 
     @FindBy(xpath = "//a[contains(@class,'logotype')]")
     private Link logo;
 
-    @Step("должен быть на сводной")
+    @Step("ВМ должен быть на сводной")
     public void isOnDashboard(){
+        helper.fluentWait(By.xpath("//h2[contains(@class,'_overview_text')]"));
+        helper.fluentWait(By.xpath("//img[@class='offer-screen']"));
         assertTrue(driver.getCurrentUrl().contains("office/dashboard"));
     }
 
@@ -49,7 +55,7 @@ public class DashboardPage extends BasePage{
 
     @Step("останавливаем слайдер через джаваскрипт")
     public void stopSlider() {
-       evaluateJavascript("_('#hotOffersSlider').pause(true)");
+        evaluateJavascript("_('#hotOffersSlider').pause(true)");
     }
 
 
