@@ -3,21 +3,20 @@ package wm;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.dashboard.DashboardPage;
 import pages.front.FrontPage;
 import pages.offercard.OfferCardPage;
 import roles.Webmaster;
+import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Severity;
+import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 import setup.Utils;
-import wm.listener.AllureOnFailListener;
-
-import static org.testng.AssertJUnit.assertTrue;
 
 @Test
-@Listeners(AllureOnFailListener.class)
+@Features("Ошибки в консоли")
+//@Listeners(AllureOnFailListener.class)
 public class CarcasTest extends BaseTest {
 
 
@@ -39,7 +38,8 @@ public class CarcasTest extends BaseTest {
         return new Object[][]{
                 {"/ru/webmaster/instrumentyi/push_ads/getlink_445571172.0.htm"},
                 {"/ru/webmaster/tools/feeds/coupons_feed_3641948.0.htm"},
-                {"/ru/webmaster/tools/rotators/banners_rotator_416459372.0.htm"},
+                {"/ru/webmaster/tools/rotators/banners_rotator_416459372.0.htm"}
+
         };
     }
 
@@ -63,16 +63,16 @@ public class CarcasTest extends BaseTest {
 
 
     @Test(dataProvider = "getUrl")
-    @Severity(value = SeverityLevel.CRITICAL)
+    @Stories(value = "проверка консоли браузера на наличие ошибок в разделах ВМа")
+    @Severity(value = SeverityLevel.NORMAL)
     public void carcasTest(String url) throws InterruptedException {
 
         dashboard.goToSection(url);
         dashboard.waitSpinner();
-        assertTrue(url.length()>0);
+        utils.checkConsoleLog();
 
 
     }
-
 
 
 

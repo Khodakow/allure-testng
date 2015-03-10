@@ -4,6 +4,10 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.Logs;
 import org.openqa.selenium.remote.Augmenter;
 import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -15,9 +19,14 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static org.testng.Assert.assertFalse;
+
 
 public class Utils {
 
@@ -76,6 +85,30 @@ public class Utils {
     private static String getPath(String nameTest) throws IOException {
         File directory = new File(".");
         return directory.getCanonicalPath() + "/target/allure-results/" + getFileName(nameTest);
+    }
+
+    @Step("Проверяем логи консоли браузера")
+    public void checkConsoleLog(){
+        List<String> l = get_all_logs();
+        check_array_has_errors(l);
+
+    }
+
+    @Step
+    public List<String> get_all_logs(){
+        List<String> l = new ArrayList<String>();
+        Logs logs = driver.manage().logs();
+        LogEntries logEntries = logs.get(LogType.BROWSER);
+        for (LogEntry logEntry : logEntries) {
+            System.out.println("Console output: "+logEntry.getMessage());
+            l.add(logEntry.getMessage());
+        }
+        return l;
+    }
+
+    @Step
+    public void check_array_has_errors(List<String> list){
+        assertFalse(list.size() > 0,"Проверяем что в логах консоли нет сообщений уровня SEVERE " + list);
     }
 
 }

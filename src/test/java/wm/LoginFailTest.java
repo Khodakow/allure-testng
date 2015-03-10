@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.dashboard.DashboardPage;
 import pages.front.FrontPage;
 import roles.Webmaster;
+import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.model.SeverityLevel;
@@ -14,6 +15,7 @@ import setup.Utils;
 import wm.listener.AllureOnFailListener;
 
 @Test
+@Features("Авторизация ВМа")
 @Listeners(AllureOnFailListener.class)
 public class LoginFailTest extends BaseTest {
 

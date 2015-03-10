@@ -5,6 +5,9 @@
 package setup;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import ru.yandex.qatools.allure.annotations.Attachment;
@@ -40,8 +43,12 @@ public class DriverSetup {
                 capabilities = DesiredCapabilities.firefox();
                 break;
         }
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.SEVERE);
+        capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
         try {
             driver = new RemoteWebDriver(new URL(remoteUrl), capabilities);
+
         } catch (MalformedURLException ex) {
             Logger.getLogger(DriverSetup.class.getName()).log(Level.SEVERE, null, ex);
         }

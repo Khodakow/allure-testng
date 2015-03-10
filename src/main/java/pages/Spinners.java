@@ -56,7 +56,7 @@ public class Spinners extends HtmlElement{
                 }
             }
         }
-        System.out.println("table ready: "+check);
+        System.out.println("table ready at ||||"+ driver.getCurrentUrl() +"|||| : "+check);
         return check;
 
     }
@@ -95,7 +95,7 @@ public class Spinners extends HtmlElement{
                 }
             }
         }
-        System.out.println("chart ready: "+check);
+        System.out.println("chart ready: at ||||"+ driver.getCurrentUrl() +"|||| "+check);
         return check;
     }
 
@@ -114,7 +114,7 @@ public class Spinners extends HtmlElement{
                 }
             }
         }
-        System.out.println("delta chart ready: "+check);
+        System.out.println("delta chart ready: at"+ driver.getCurrentUrl() +" "+check);
         return check;
     }
     
@@ -129,7 +129,7 @@ public class Spinners extends HtmlElement{
                 ignoring(NoSuchElementException.class).
                 until(new Predicate<WebDriver>(){
                     public boolean apply(WebDriver driver){
-                        System.out.println("small spinner ready: "+!checkSpinnerJquery());
+                        System.out.println("small spinner at ||||"+ driver.getCurrentUrl() +"|||| ready: "+!checkSpinnerJquery());
                         return !checkSpinnerJquery();
                     }
                 });
