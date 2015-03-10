@@ -13,12 +13,6 @@
         </classes>
     </test>
 
-    <test name="Ошибки в консоли">
-        <classes>
-            <class name="wm.CarcasTest"/>
-            <class name="wm.CarcasMainPageTest"/>
-        </classes>
-    </test>
 
 
 
