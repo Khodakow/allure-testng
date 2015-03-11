@@ -1,29 +1,31 @@
-package wm.login;
+package mgr;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.wm.dashboard.DashboardPage;
+import pages.wm.BasePage;
+import pages.wm.Spinners;
 import pages.wm.front.FrontPage;
-import roles.Webmaster;
+import roles.Manager;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 import setup.Utils;
-import wm.listener.AllureOnFailListener;
+import wm.login.BaseTest;
 
 @Test
-@Features("Авторизация ВМа")
-@Listeners(AllureOnFailListener.class)
-public class LoginFailTest extends BaseTest {
+@Features("Авторизация Менеджера")
+public class LoginTest extends BaseTest {
+
+
 
     private FrontPage front;
-    private DashboardPage dashboard;
-    private Webmaster wm;
+    private Manager mgr;
     private Utils utils;
     private WebDriver driver;
+    private Spinners spin;
+    private BasePage page;
 
     @BeforeClass
     public void setUp(){
@@ -31,24 +33,21 @@ public class LoginFailTest extends BaseTest {
         driver = super.getDriver();
         utils = super.getUtils();
         front = new FrontPage(driver);
-        dashboard = new DashboardPage(driver);
-        wm = new Webmaster("webmaster","azaza");
+        mgr = new Manager();
+        spin = new Spinners(driver);
+        page = new BasePage(driver);
         utils.openMainPage();
+        front.login(mgr);
     }
+
 
     @Test
-    @Stories("авторизация вма с неправильными данными")
+    @Stories("авторизация менеджера с правильными данными")
     @Severity(value = SeverityLevel.CRITICAL)
-    public void wrongLoginTest() throws InterruptedException {
-        front.login(wm);
-        dashboard.isNotOnDashboard();
+    public void loginTest() throws InterruptedException {
+        page.waitDashboard();
+        spin.waitSpinner();
     }
-
-
-
-
-
-
 
 
 }

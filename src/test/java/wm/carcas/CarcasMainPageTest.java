@@ -3,16 +3,16 @@ package wm.carcas;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.dashboard.DashboardPage;
-import pages.front.FrontPage;
-import pages.offercard.OfferCardPage;
+import pages.wm.dashboard.DashboardPage;
+import pages.wm.front.FrontPage;
+import pages.wm.offercard.OfferCardPage;
 import roles.Webmaster;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 import setup.Utils;
-import wm.BaseTest;
+import wm.login.BaseTest;
 
 @Test
 @Features("Ошибки в консоли")

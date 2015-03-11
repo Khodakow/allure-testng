@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Вебмастер" parallel="tests" verbose="1">
-
+<suite name="CityAds Testsuite" parallel="tests" verbose="1">
 
 
     <test name="Авторизация ВМа">
@@ -13,6 +12,11 @@
         </classes>
     </test>
 
+    <test name="Авторизация Менеджера">
+        <classes>
+            <class name="mgr.LoginTest"/>
+        </classes>
+    </test>
 
 
 

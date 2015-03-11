@@ -1,7 +1,9 @@
-package pages;
+package pages.wm;
 
+import net.thucydides.core.annotations.findby.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import pages.WebElementHelper;
 import ru.yandex.qatools.allure.annotations.Step;
 
 /**
@@ -11,10 +13,12 @@ public class BasePage{
 
     private WebDriver driver;
     private String baseUrl;
+    private WebElementHelper helper;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.baseUrl = System.getProperty("baseUrl");
+        this.helper = new WebElementHelper(driver);
     }
 
     @Step
@@ -28,6 +32,13 @@ public class BasePage{
         String testUrl = baseUrl + url;
         String newtestUrl = testUrl.replaceAll("//","/");
         driver.get(newtestUrl);
+    }
+
+
+    @Step("ждем загрузку сводных показателей")
+    public void waitDashboard(){
+        System.out.println("waiting for (//h2[contains(@class,'_overview_text')])[1]");
+        helper.fluentWait(By.xpath("(//h2[contains(@class,'_overview_text')])[1]"));
     }
 
 

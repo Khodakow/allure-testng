@@ -1,8 +1,8 @@
-package pages.offercard;
+package pages.wm.offercard;
 
 import org.openqa.selenium.WebDriver;
-import pages.BasePage;
-import pages.offercard.elements.DashboardTab;
+import pages.wm.BasePage;
+import pages.wm.offercard.elements.DashboardTab;
 import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 

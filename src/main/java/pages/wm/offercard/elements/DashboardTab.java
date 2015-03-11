@@ -1,4 +1,4 @@
-package pages.offercard.elements;
+package pages.wm.offercard.elements;
 
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.annotations.Block;

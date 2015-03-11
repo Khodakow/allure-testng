@@ -1,8 +1,8 @@
-package pages.front;
+package pages.wm.front;
 
 import org.openqa.selenium.WebDriver;
 import pages.WebElementHelper;
-import pages.front.elements.PopupLoginForm;
+import pages.wm.front.elements.PopupLoginForm;
 import roles.User;
 import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;

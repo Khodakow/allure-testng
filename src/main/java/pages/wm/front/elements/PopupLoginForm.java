@@ -1,4 +1,4 @@
-package pages.front.elements;
+package pages.wm.front.elements;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,7 +34,7 @@ public class PopupLoginForm extends HtmlElement {
     private WebElement submit;
 
 
-    @Step
+    @Step("заполняем форму авторизации")
     public void fillLoginForm(String user,String password){
         enter.click();
         loginInput.sendKeys(user);

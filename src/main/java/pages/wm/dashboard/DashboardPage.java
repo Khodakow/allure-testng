@@ -1,12 +1,12 @@
-package pages.dashboard;
+package pages.wm.dashboard;
 
 import net.thucydides.core.annotations.findby.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import pages.BasePage;
-import pages.Spinners;
+import pages.wm.BasePage;
+import pages.wm.Spinners;
 import pages.WebElementHelper;
-import pages.dashboard.elements.HotOffers;
+import pages.wm.dashboard.elements.HotOffers;
 import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.element.Link;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;

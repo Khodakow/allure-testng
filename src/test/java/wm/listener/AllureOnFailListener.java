@@ -5,7 +5,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import setup.Utils;
-import wm.BaseTest;
+import wm.login.BaseTest;
 
 /**
  * Created by s.lugovskiy on 03.03.2015 13:56.

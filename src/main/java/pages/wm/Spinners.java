@@ -1,4 +1,4 @@
-package pages;
+package pages.wm;
 
 import com.google.common.base.Predicate;
 import org.openqa.selenium.JavascriptExecutor;
@@ -124,8 +124,8 @@ public class Spinners extends HtmlElement{
 
     public void waitSpinner(){
         new FluentWait<WebDriver>(driver).
-                withTimeout(160, TimeUnit.SECONDS).
-                pollingEvery(500, TimeUnit.MILLISECONDS).
+                withTimeout(30, TimeUnit.SECONDS).
+                pollingEvery(1000, TimeUnit.MILLISECONDS).
                 ignoring(NoSuchElementException.class).
                 until(new Predicate<WebDriver>(){
                     public boolean apply(WebDriver driver){
@@ -137,7 +137,7 @@ public class Spinners extends HtmlElement{
 
         new FluentWait<WebDriver>(driver).
                 withTimeout(120, TimeUnit.SECONDS).
-                pollingEvery(500, TimeUnit.MILLISECONDS).
+                pollingEvery(1000, TimeUnit.MILLISECONDS).
                 ignoring(NoSuchElementException.class).
                 until(new Predicate<WebDriver>(){
                     public boolean apply(WebDriver driver){

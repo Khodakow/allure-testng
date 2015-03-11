@@ -1,5 +1,4 @@
-package wm;
-
+package wm.login;
 
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
@@ -29,6 +28,8 @@ public abstract class BaseTest {
 
     @BeforeMethod
     public void logMethodName(Method method){
+        System.out.println();
+        System.out.println();
         System.out.println("==================================================================");
         System.out.println("TEST STARTED: "+method.getName());
     }
@@ -37,6 +38,8 @@ public abstract class BaseTest {
     public void logMethodNameAfter(Method method){
         System.out.println("TEST ENDED: "+method.getName());
         System.out.println("==================================================================");
+        System.out.println();
+        System.out.println();
     }
 
     public WebDriver getDriver() {
