@@ -1,6 +1,7 @@
-package wm;
+package wm.login;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.dashboard.DashboardPage;
@@ -12,11 +13,12 @@ import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 import setup.Utils;
+import wm.BaseTest;
 
 @Test
-@Features("Ошибки в консоли")
+@Features("Авторизация ВМа")
 //@Listeners(AllureOnFailListener.class)
-public class CarcasMainPageTest extends BaseTest {
+public class LoginTest extends BaseTest {
 
 
 
@@ -26,10 +28,6 @@ public class CarcasMainPageTest extends BaseTest {
     private Webmaster wm;
     private Utils utils;
     private WebDriver driver;
-
-
-
-
 
     @BeforeClass
     public void setUp(){
@@ -41,24 +39,33 @@ public class CarcasMainPageTest extends BaseTest {
         card = new OfferCardPage(driver);
         wm = new Webmaster();
         utils.openMainPage();
-
+        front.login(wm);
     }
-
 
 
     @Test
-    @Stories(value = "проверка консоли браузера на наличие ошибок на главной")
-    @Severity(value = SeverityLevel.NORMAL)
-    public void carcasMainPageTest() throws InterruptedException {
+    @Stories("авторизация вма с правильными данными")
+    @Severity(value = SeverityLevel.CRITICAL)
+    public void loginTest() throws InterruptedException {
+        dashboard.isOnDashboard();
+        dashboard.waitSpinner();
+    }
 
-       utils.checkConsoleLog();
-
-
+    @Test
+    @Stories("проверка ссылки из блока Топовые предложения")
+    @Severity(value = SeverityLevel.CRITICAL)
+    public void hotOfferTest(){
+        dashboard.isOnDashboard();
+        dashboard.stopSlider();
+        dashboard.goToFirstHotOffer();
+        card.isOnDashboardTab();
     }
 
 
-
-
+    @AfterMethod
+    public void goBack(){
+        dashboard.clickLogo();
+    }
 
 
 

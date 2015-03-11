@@ -52,6 +52,7 @@ public class DriverSetup {
         } catch (MalformedURLException ex) {
             Logger.getLogger(DriverSetup.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("Creating driver instance: "+" "+capabilities.getBrowserName() +" "+capabilities.getVersion()+" "+capabilities.getPlatform());
         return driver;
     }
 

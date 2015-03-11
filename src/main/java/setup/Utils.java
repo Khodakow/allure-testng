@@ -72,6 +72,7 @@ public class Utils {
     public String openMainPage(){
         String host = System.getProperty("baseUrl");
         driver.get(host);
+        System.out.println("Go to "+host);
         driver.manage().window().maximize();
         return driver.getCurrentUrl();
     }
