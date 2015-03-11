@@ -3,6 +3,7 @@ package pages.wm;
 import net.thucydides.core.annotations.findby.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import pages.WebElementHelper;
 import ru.yandex.qatools.allure.annotations.Step;
 
@@ -41,5 +42,9 @@ public class BasePage{
         helper.fluentWait(By.xpath("(//h2[contains(@class,'_overview_text')])[1]"));
     }
 
+    @Step("Проверяем что данные совпадают")
+    public void checkValuesAreEquals(Float i,Float j){
+        Assert.assertEquals(i,j,"Холд в финансовой сводной "+i+" не совпадает с холдом в вкладке Начисления и выплаты "+j+"");
+    }
 
 }

@@ -43,7 +43,7 @@ public class UsersPage extends BasePage{
 
     }
 
-    @Step("поиск")
+    @Step("фильтруем с заданными параметрами")
     public void clickSearch(){
 
         filterFooter.clickSearch();

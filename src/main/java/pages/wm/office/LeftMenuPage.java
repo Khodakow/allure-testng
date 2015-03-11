@@ -1,0 +1,41 @@
+package pages.wm.office;
+
+import org.openqa.selenium.WebDriver;
+import pages.WebElementHelper;
+import pages.wm.BasePage;
+import pages.wm.Spinners;
+import pages.wm.office.dashboard.elements.Finance;
+import pages.wm.office.dashboard.elements.HotOffers;
+import pages.wm.office.elements.LeftMenu;
+import ru.yandex.qatools.allure.annotations.Step;
+import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
+
+/**
+ * Created by a.hodakov on 11.03.2015.
+ */
+
+public class LeftMenuPage extends BasePage {
+
+
+    private WebDriver driver;
+    private Spinners spin;
+    private HotOffers hot;
+    private Finance finance;
+    private WebElementHelper helper;
+    private LeftMenu leftmenu;
+
+
+    public LeftMenuPage(WebDriver driver) {
+        super(driver);
+        HtmlElementLoader.populatePageObject(this, driver);
+        this.driver = driver;
+        this.spin = new Spinners(driver);
+        this.helper = new WebElementHelper(driver);
+    }
+
+    @Step("клик в меню на Начисления и выплаты")
+    public void clickPayments(){
+        leftmenu.clickPayments();
+        spin.waitSpinner();
+    }
+}

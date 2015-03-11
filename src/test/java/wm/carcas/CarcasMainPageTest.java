@@ -3,7 +3,7 @@ package wm.carcas;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.wm.dashboard.DashboardPage;
+import pages.wm.office.dashboard.WmDashboardPage;
 import pages.wm.front.FrontPage;
 import pages.wm.offercard.OfferCardPage;
 import roles.Webmaster;
@@ -22,7 +22,7 @@ public class CarcasMainPageTest extends BaseTest {
 
 
     private FrontPage front;
-    private DashboardPage dashboard;
+    private WmDashboardPage dashboard;
     private OfferCardPage card;
     private Webmaster wm;
     private Utils utils;
@@ -38,7 +38,7 @@ public class CarcasMainPageTest extends BaseTest {
         driver = super.getDriver();
         utils = super.getUtils();
         front = new FrontPage(driver);
-        dashboard = new DashboardPage(driver);
+        dashboard = new WmDashboardPage(driver);
         card = new OfferCardPage(driver);
         wm = new Webmaster();
         utils.openMainPage();

@@ -1,12 +1,13 @@
-package pages.wm.dashboard;
+package pages.wm.office.dashboard;
 
 import net.thucydides.core.annotations.findby.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import pages.WebElementHelper;
 import pages.wm.BasePage;
 import pages.wm.Spinners;
-import pages.WebElementHelper;
-import pages.wm.dashboard.elements.HotOffers;
+import pages.wm.office.dashboard.elements.Finance;
+import pages.wm.office.dashboard.elements.HotOffers;
 import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.element.Link;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
@@ -17,15 +18,16 @@ import static org.testng.Assert.assertTrue;
 /**
  * Created by s.lugovskiy on 04.03.2015 10:59.
  */
-public class DashboardPage extends BasePage{
+public class WmDashboardPage extends BasePage{
 
 
     private WebDriver driver;
     private Spinners spin;
     private HotOffers hot;
+    private Finance finance;
     private WebElementHelper helper;
 
-    public DashboardPage(WebDriver driver) {
+    public WmDashboardPage(WebDriver driver) {
         super(driver);
         HtmlElementLoader.populatePageObject(this, driver);
         this.driver = driver;
@@ -71,6 +73,12 @@ public class DashboardPage extends BasePage{
         hot.clickFirstSwitch();
         hot.clickTopOffer();
         spin.waitSpinner();
+    }
+
+    @Step("Получение данных с финансовой сводной")
+    public Float getHoldCommision(){
+        Float balance = finance.getCommision();
+        return balance;
     }
 
 

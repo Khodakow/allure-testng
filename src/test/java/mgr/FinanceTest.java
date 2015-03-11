@@ -3,10 +3,13 @@ package mgr;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.mgr.dashboard.DashboardPage;
+import pages.mgr.dashboard.MgrDashboardPage;
 import pages.mgr.users.UsersPage;
 import pages.wm.Spinners;
 import pages.wm.front.FrontPage;
+import pages.wm.office.LeftMenuPage;
+import pages.wm.office.dashboard.WmDashboardPage;
+import pages.wm.office.payments.PaymentsPage;
 import roles.Manager;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Severity;
@@ -26,9 +29,11 @@ public class FinanceTest extends BaseTest {
     private Utils utils;
     private WebDriver driver;
     private Spinners spin;
-    private DashboardPage dashboard;
+    private MgrDashboardPage mgrdashboard;
     private UsersPage users;
-
+    private WmDashboardPage wmdashboard;
+    private PaymentsPage payments;
+    private LeftMenuPage leftmenu;
     @BeforeClass
     public void setUp(){
         super.init();
@@ -37,10 +42,14 @@ public class FinanceTest extends BaseTest {
         front = new FrontPage(driver);
         mgr = new Manager();
         spin = new Spinners(driver);
-        dashboard = new DashboardPage(driver);
+        mgrdashboard = new MgrDashboardPage(driver);
+        wmdashboard = new WmDashboardPage(driver);
+        payments = new PaymentsPage(driver);
+        leftmenu = new LeftMenuPage(driver);
         users = new UsersPage(driver);
         utils.openMainPage();
         front.login(mgr);
+
     }
 
 
@@ -48,12 +57,17 @@ public class FinanceTest extends BaseTest {
     @Stories("Сравнение показателей финансовой сводной и начислений и выплат")
     @Severity(value = SeverityLevel.CRITICAL)
     public void financeTest() throws InterruptedException {
-        dashboard.waitDashboard();
-        dashboard.goToUsers();
+        mgrdashboard.waitDashboard();
+        mgrdashboard.goToUsers();
         users.setBalance("100","");
         users.setHold("3","3");
         users.clickSearch();
         users.clickFirstSudo();
+        Float i = wmdashboard.getHoldCommision();
+        leftmenu.clickPayments();
+        Float j = payments.getHoldCommision();
+        payments.checkValuesAreEquals(i,j);
+
 
 
 
