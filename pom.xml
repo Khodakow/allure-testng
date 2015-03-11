@@ -158,7 +158,6 @@
                         <wmRemoteAuth>d2d540277b3ea9bebfdd3b1152940354</wmRemoteAuth>
                         <driver>chrome</driver>
 
-
                     </systemPropertyVariables>
 
                 </configuration>

@@ -4,7 +4,7 @@
 <suite name="CityAds Testsuite" parallel="tests" verbose="1">
 
 
-    <test name="Авторизация ВМа">
+   <test name="Авторизация ВМа">
         <classes>
            <class name="wm.login.LoginTest"/>
             <class name="wm.login.LoginFailTest"/>
@@ -18,6 +18,10 @@
         </classes>
     </test>
 
-
+    <test name="Финансы">
+        <classes>
+            <class name="mgr.FinanceTest"/>
+        </classes>
+    </test>
 
 </suite>
