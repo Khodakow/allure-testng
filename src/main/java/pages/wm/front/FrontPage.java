@@ -1,7 +1,8 @@
-package pages.front;
+package pages.wm.front;
 
 import org.openqa.selenium.WebDriver;
-import pages.front.elements.PopupLoginForm;
+import pages.WebElementHelper;
+import pages.wm.front.elements.PopupLoginForm;
 import roles.User;
 import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
@@ -12,19 +13,16 @@ import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 public class FrontPage {
 
     private PopupLoginForm popupLoginForm;
+    private WebElementHelper helper;
 
     public FrontPage(WebDriver driver) {
         HtmlElementLoader.populatePageObject(this, driver);
+        helper = new WebElementHelper(driver);
     }
 
-    @Step
+    @Step("заполняем форму авторизации в попапе")
     public void login(User user){
         popupLoginForm.fillLoginForm(user.getName(), user.getPassword());
         popupLoginForm.submitForm();
     }
-
-
-
-
-
 }

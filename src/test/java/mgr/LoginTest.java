@@ -1,28 +1,31 @@
-package wm;
+package mgr;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.dashboard.DashboardPage;
-import pages.front.FrontPage;
-import roles.Webmaster;
+import pages.wm.BasePage;
+import pages.wm.Spinners;
+import pages.wm.front.FrontPage;
+import roles.Manager;
+import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 import setup.Utils;
+import wm.login.BaseTest;
 
 @Test
-@Listeners(AllureOnFailListener.class)
+@Features("Авторизация Менеджера")
 public class LoginTest extends BaseTest {
 
 
 
     private FrontPage front;
-    private DashboardPage dashboard;
-    private Webmaster wm;
+    private Manager mgr;
     private Utils utils;
     private WebDriver driver;
+    private Spinners spin;
+    private BasePage page;
 
     @BeforeClass
     public void setUp(){
@@ -30,25 +33,21 @@ public class LoginTest extends BaseTest {
         driver = super.getDriver();
         utils = super.getUtils();
         front = new FrontPage(driver);
-        dashboard = new DashboardPage(driver);
-        wm = new Webmaster();
+        mgr = new Manager();
+        spin = new Spinners(driver);
+        page = new BasePage(driver);
         utils.openMainPage();
+        front.login(mgr);
     }
 
 
     @Test
-    @Stories("авторизация вма с правильными данными")
+    @Stories("авторизация менеджера с правильными данными")
     @Severity(value = SeverityLevel.CRITICAL)
     public void loginTest() throws InterruptedException {
-        front.login(wm);
-        dashboard.isOnDashboard();
+        page.waitDashboard();
+        spin.waitSpinner();
     }
-
-
-
-
-
-
 
 
 }

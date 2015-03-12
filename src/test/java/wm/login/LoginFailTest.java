@@ -1,25 +1,26 @@
-package wm;
+package wm.login;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.dashboard.DashboardPage;
-import pages.front.FrontPage;
+import pages.wm.office.dashboard.WmDashboardPage;
+import pages.wm.front.FrontPage;
 import roles.Webmaster;
+import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 import setup.Utils;
+import wm.listener.AllureOnFailListener;
 
 @Test
+@Features("Авторизация ВМа")
 @Listeners(AllureOnFailListener.class)
-public class LoginEmptyTest extends BaseTest {
-
-
+public class LoginFailTest extends BaseTest {
 
     private FrontPage front;
-    private DashboardPage dashboard;
+    private WmDashboardPage dashboard;
     private Webmaster wm;
     private Utils utils;
     private WebDriver driver;
@@ -30,16 +31,15 @@ public class LoginEmptyTest extends BaseTest {
         driver = super.getDriver();
         utils = super.getUtils();
         front = new FrontPage(driver);
-        dashboard = new DashboardPage(driver);
-        wm = new Webmaster("","");
+        dashboard = new WmDashboardPage(driver);
+        wm = new Webmaster("webmaster","azaza");
         utils.openMainPage();
     }
 
-
     @Test
-    @Stories("авторизация с незаполненными данными")
+    @Stories("авторизация вма с неправильными данными")
     @Severity(value = SeverityLevel.CRITICAL)
-    public void loginEmptyTest() throws InterruptedException {
+    public void wrongLoginTest() throws InterruptedException {
         front.login(wm);
         dashboard.isNotOnDashboard();
     }

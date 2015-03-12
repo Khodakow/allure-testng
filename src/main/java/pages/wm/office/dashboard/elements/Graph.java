@@ -1,4 +1,4 @@
-package pages.dashboard.elements;
+package pages.wm.office.dashboard.elements;
 
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.annotations.Block;

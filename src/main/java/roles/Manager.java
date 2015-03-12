@@ -3,7 +3,7 @@ package roles;
 /**
  * Created by s.lugovskiy on 04.03.2015 13:07.
  */
-public class Webmaster implements User {
+public class Manager implements User {
 
     private String name;
     private String password;
@@ -29,13 +29,13 @@ public class Webmaster implements User {
         return remoteAuth;
     }
 
-    public Webmaster() {
-        this.name = System.getProperty("wmname");
-        this.password = System.getProperty("wmpassword");
-        this.remoteAuth = System.getProperty("wmRemoteAuth");
+    public Manager() {
+        this.name = System.getProperty("mgrname");
+        this.password = System.getProperty("mgrpassword");
+        this.remoteAuth = System.getProperty("mgrRemoteAuth");
     }
 
-    public Webmaster(String name, String password) {
+    public Manager(String name, String password) {
         this.name = name;
         this.password = password;
     }

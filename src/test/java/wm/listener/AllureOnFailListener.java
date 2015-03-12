@@ -1,10 +1,11 @@
-package wm;
+package wm.listener;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import setup.Utils;
+import wm.login.BaseTest;
 
 /**
  * Created by s.lugovskiy on 03.03.2015 13:56.
