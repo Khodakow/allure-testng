@@ -7,7 +7,7 @@ import pages.mgr.dashboard.MgrDashboardPage;
 import pages.mgr.users.UsersPage;
 import pages.wm.Spinners;
 import pages.wm.front.FrontPage;
-import pages.wm.office.LeftMenuPage;
+import pages.wm.office.OfficePage;
 import pages.wm.office.dashboard.WmDashboardPage;
 import pages.wm.office.payments.PaymentsPage;
 import roles.Manager;
@@ -33,7 +33,7 @@ public class FinanceTest extends BaseTest {
     private UsersPage users;
     private WmDashboardPage wmdashboard;
     private PaymentsPage payments;
-    private LeftMenuPage leftmenu;
+    private OfficePage office;
     @BeforeClass
     public void setUp(){
         super.init();
@@ -45,7 +45,7 @@ public class FinanceTest extends BaseTest {
         mgrdashboard = new MgrDashboardPage(driver);
         wmdashboard = new WmDashboardPage(driver);
         payments = new PaymentsPage(driver);
-        leftmenu = new LeftMenuPage(driver);
+        office = new OfficePage(driver);
         users = new UsersPage(driver);
         utils.openMainPage();
         front.login(mgr);
@@ -64,7 +64,7 @@ public class FinanceTest extends BaseTest {
         users.clickSearch();
         users.clickFirstSudo();
         Float i = wmdashboard.getHoldCommision();
-        leftmenu.clickPayments();
+        office.clickPayments();
         Float j = payments.getHoldCommision();
         payments.checkValuesAreEquals(i,j);
 
